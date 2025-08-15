@@ -69,3 +69,4 @@ if page.status_code == 200:
   ''')
   db_conn.commit()
   merged_df.to_sql('Movies', db_conn, if_exists = 'replace', index=False)
+  db_conn.close()
