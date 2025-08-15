@@ -273,8 +273,9 @@ db_conn = sqlite3.connect('sports_teams.db')
 
 cursor = db_conn.cursor()
 
+cursor.execute('DROP TABLE IF EXISTS Athletes')
 cursor.execute('''
-  CREATE TABLE Althetes (
+  CREATE TABLE Athletes (
     name TEXT,
     height REAL
   )
@@ -282,15 +283,16 @@ cursor.execute('''
 db_conn.commit()
 
 # add mens_volleyball_df to sql
-mens_volleyball_df.to_sql('Players', db_conn, if_exists='replace', index=False)
+mens_volleyball_df.to_sql('Athletes', db_conn, if_exists='replace', index=False)
 
 # add mens_swim_df to sql
-mens_swim_df.to_sql('Players', db_conn, if_exists='append', index=False)
+mens_swim_df.to_sql('Athletes', db_conn, if_exists='append', index=False)
 
 # add womens_volleyball_df to sql
-womens_volleyball_df.to_sql('Players', db_conn, if_exists='append', index=False)
+womens_volleyball_df.to_sql('Athletes', db_conn, if_exists='append', index=False)
 
 # add womens_swim_df to sql
-womens_swim_df.to_sql('Players', db_conn, if_exists='append', index=False)
+womens_swim_df.to_sql('Athletes', db_conn, if_exists='append', index=False)
 
 db_conn.commit()
+db_conn.close()
