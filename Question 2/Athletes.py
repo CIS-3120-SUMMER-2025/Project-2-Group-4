@@ -295,4 +295,6 @@ womens_volleyball_df.to_sql('Athletes', db_conn, if_exists='append', index=False
 womens_swim_df.to_sql('Athletes', db_conn, if_exists='append', index=False)
 
 db_conn.commit()
+
+db_conn.close()
 db_conn.close()
